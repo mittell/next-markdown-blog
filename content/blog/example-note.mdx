@@ -1,0 +1,93 @@
+---
+title: Example Note
+description: This an example note using one of my studying notes.
+date: 2024-09-03
+published: true
+---
+
+# Basic Logging
+
+A really simple example of using the built in logger, is by adding the following to Program.cs:
+
+```csharp
+app.Logger.LogInformation(5, "The database is ready!");
+```
+
+We are using the default web application logger, and the following is output when the app is run:
+
+```bash
+info: GameStore.Api[5]
+      The database is ready!
+```
+
+# ILoggerFactory
+
+We can use the ILoggerFactory to do something similar:
+
+```csharp showLineNumbers {5} title="DataExtensions.cs" caption="I am a caption!" /logger/
+public static class DataExtensions
+{
+    public static async Task InitialiseDbAsync(this IServiceProvider serviceProvider)
+    {
+        using var scope = serviceProvider.CreateScope();
+
+        var dbContext = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
+        await dbContext.Database.MigrateAsync();
+
+        var logger = serviceProvider
+            .GetRequiredService<ILoggerFactory>()
+            .CreateLogger("DB Initialiser");
+
+        logger.LogInformation(5, "The database is ready!");
+    }
+
+    public static IServiceCollection AddRepositories(
+        this IServiceCollection services,
+        IConfiguration configuration
+    )
+    {
+        var connString = configuration.GetConnectionString("GameStoreContext");
+        services
+            .AddSqlServer<GameStoreContext>(connString)
+            .AddScoped<IGamesRepository, EntityFrameworkGamesRepository>();
+
+        return services;
+    }
+}
+```
+
+# ILogger - Dependency Injection
+
+We can also use the Dependency Injection functionality that is built into modern .NET:
+
+```csharp
+public class EntityFrameworkGamesRepository : IGamesRepository
+{
+    private readonly GameStoreContext dbContext;
+    private readonly ILogger<EntityFrameworkGamesRepository> logger;
+
+    public EntityFrameworkGamesRepository(
+        GameStoreContext dbContext,
+        ILogger<EntityFrameworkGamesRepository> logger
+    )
+    {
+        this.dbContext = dbContext;
+        this.logger = logger;
+    }
+
+    public async Task CreateAsync(Game game)
+    {
+        await dbContext.Games.AddAsync(game);
+        await dbContext.SaveChangesAsync();
+
+        logger.LogInformation($"Created game {game.Name} with price {game.Price}");
+    }
+}
+```
+
+This will output the following when we make a POST request:
+
+```bash
+info: GameStore.Api.Repositories.EntityFrameworkGamesRepository[0]
+      Created game Golden Arms with price 69.99
+```
