@@ -2,7 +2,7 @@ export const siteConfig = {
 	name: 'Markdown Blog',
 	url: 'https://example.com',
 	description: 'Next.js blog with Markdown support.',
-	author: 'Chris Mittell',
+	author: 'Human Being',
 	links: {
 		x: 'https://example.com',
 		github: 'https://example.com',
