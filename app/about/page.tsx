@@ -32,11 +32,32 @@ export default async function AboutPage() {
 					</p>
 				</div>
 				<p className='text-muted-foreground text-lg py-4'>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur
-					nemo aspernatur a esse vero impedit, consectetur est laudantium veniam
-					sed quam qui delectus nobis officiis repellat. Quam maiores culpa,
-					dicta iste atque voluptate dolores nostrum officia unde eum ipsum
-					vero?
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+					praesentium, blanditiis maxime nobis harum unde, laboriosam facere
+					amet, ipsa ut ex molestias fugiat veritatis officiis esse tempore
+					inventore laborum cumque. Libero facilis asperiores atque fugiat natus
+					excepturi ducimus! Nam molestias tempora cumque temporibus illo.
+					aliquam assumenda minus corrupti corporis non quibusdam, quae aliquid
+					quo dignissimos in recusandae maxime consectetur aperiam reprehenderit
+					rerum. Quia nesciunt eaque modi consectetur! Ipsum deleniti mollitia
+					molestias consectetur tempore, sed porro expedita repellendus
+					assumenda temporibus eaque repudiandae esse alias quidem, hic iure id
+					est similique veniam rem repellat. Autem inventore eveniet magni non
+					totam molestias dicta!
+				</p>
+				<p className='text-muted-foreground text-lg py-4'>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+					praesentium, blanditiis maxime nobis harum unde, laboriosam facere
+					amet, ipsa ut ex molestias fugiat veritatis officiis esse tempore
+					inventore laborum cumque. Libero facilis asperiores atque fugiat natus
+					excepturi ducimus! Nam molestias tempora cumque temporibus illo.
+					aliquam assumenda minus corrupti corporis non quibusdam, quae aliquid
+					quo dignissimos in recusandae maxime consectetur aperiam reprehenderit
+					rerum. Quia nesciunt eaque modi consectetur! Ipsum deleniti mollitia
+					molestias consectetur tempore, sed porro expedita repellendus
+					assumenda temporibus eaque repudiandae esse alias quidem, hic iure id
+					est similique veniam rem repellat. Autem inventore eveniet magni non
+					totam molestias dicta!
 				</p>
 			</div>
 		</div>
